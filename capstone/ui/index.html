@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafeeq AI Assistant</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f3f6fb;
+      color: #243047;
+    }
+
+    header {
+      background: #183b65;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 26px;
+    }
+
+    header p {
+      margin: 0;
+      color: #dbe8f6;
+      font-size: 14px;
+    }
+
+    main {
+      width: min(760px, 94%);
+      margin: 30px auto;
+    }
+
+    .welcome {
+      margin-bottom: 18px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 6px;
+    }
+
+    .welcome p {
+      color: #65738a;
+      line-height: 1.6;
+    }
+
+    .chat-card {
+      background: white;
+      border: 1px solid #e1e7ef;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px #2538580c;
+    }
+
+    #messages {
+      min-height: 300px;
+      max-height: 460px;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .message {
+      padding: 13px 15px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .assistant {
+      background: #edf3fa;
+      margin-right: 35px;
+    }
+
+    .user {
+      background: #183b65;
+      color: white;
+      margin-left: 35px;
+    }
+
+    .label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      opacity: 0.8;
+    }
+
+    .metadata {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    #status {
+      padding: 0 20px 12px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      padding: 16px;
+      border-top: 1px solid #e1e7ef;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid #ccd6e3;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 10px;
+      background: #183b65;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .notice {
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 10px;
+      }
+
+      button {
+        padding: 10px 13px;
+      }
+
+      .assistant {
+        margin-right: 10px;
+      }
+
+      .user {
+        margin-left: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Rafeeq AI</h1>
+    <p>Your intelligent Madar service assistant</p>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>How can I help you?</h2>
+      <p>
+        Ask about fees, permits, inspections, and other
+        supported services. Rafeeq uses tools to find answers.
+      </p>
+    </section>
+
+    <section class="chat-card">
+      <div id="messages" aria-live="polite">
+        <div class="message assistant">
+          <span class="label">Rafeeq</span>
+          Hello! Ask me a question about Madar services.
+        </div>
+      </div>
+
+      <div id="status" role="status">Ready</div>
+
+      <form id="chat-form">
+        <input
+          id="message-input"
+          type="text"
+          placeholder="Type your question..."
+          autocomplete="off"
+          required
+        >
+        <button id="send-button" type="submit">Send</button>
+      </form>
+    </section>
+
+    <p class="notice">
+      Prototype environment. Write actions may be queued
+      for review and are not automatically executed by this API.
+    </p>
+  </main>
+
+  <script>
+    const API_KEY = "dev-key-1";
+    const SESSION_ID = "mehaf-approval-test-2";
+
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("message-input");
+    const messages = document.getElementById("messages");
+    const statusText = document.getElementById("status");
+    const sendButton = document.getElementById("send-button");
+
+    function addMessage(role, text, metadata = "") {
+      const bubble = document.createElement("div");
+      bubble.className = `message ${role}`;
+
+      const label = document.createElement("span");
+      label.className = "label";
+      label.textContent = role === "user" ? "You" : "Rafeeq";
+
+      const content = document.createElement("div");
+      content.textContent = text;
+
+      bubble.append(label, content);
+
+      if (metadata) {
+        const details = document.createElement("div");
+        details.className = "metadata";
+        details.textContent = metadata;
+        bubble.appendChild(details);
+      }
+
+      messages.appendChild(bubble);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const message = input.value.trim();
+      if (!message || sendButton.disabled) return;
+
+      addMessage("user", message);
+      input.value = "";
+      sendButton.disabled = true;
+      statusText.textContent = "Rafeeq is thinking...";
+
+      try {
+        const response = await fetch("/v1/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-Key": API_KEY
+          },
+          body: JSON.stringify({
+            session_id: SESSION_ID,
+            message: message
+          })
+        });
+
+        const raw = await response.text();
+        let data;
+
+        try {
+        data = raw ? JSON.parse(raw) : {};
+        } catch {
+        throw new Error(
+        `Invalid API response (HTTP ${response.status}): ` +
+        (raw.slice(0, 300) || "Empty response body")
+         );
+        }
+
+        if (!response.ok) {
+          throw new Error(
+            typeof data.detail === "string"
+              ? data.detail
+              : `Request failed (${response.status})`
+          );
+        }
+
+        const tools = data.tools?.length
+          ? `Tools used: ${data.tools.join(", ")}`
+          : "Tools used: none";
+
+        const stats =
+          `${tools} | Steps: ${data.model_steps ?? 0} | ` +
+          `Tokens: ${(data.tokens?.input ?? 0) + (data.tokens?.output ?? 0)}`;
+
+        addMessage("assistant", data.reply, stats);
+
+        if (data.pending_actions?.length) {
+          const actions = data.pending_actions.map(
+            action => `${action.tool}: ${JSON.stringify(action.args)}`
+          ).join("\n");
+
+          addMessage(
+            "assistant",
+            "Action awaiting officer review:\n" + actions
+          );
+        }
+
+        statusText.textContent = "Response received";
+      } catch (error) {
+        addMessage(
+          "assistant",
+          "I could not complete the request. " + error.message
+        );
+
+        statusText.textContent = "Request failed";
+      } finally {
+        sendButton.disabled = false;
+        input.focus();
+      }
+    });
+  </script>
+</body>
+</html>

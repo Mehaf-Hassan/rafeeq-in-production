@@ -1,0 +1,79 @@
+agent,id,category,lang,trial,passed,failed_graders,tools,steps,seconds,final
+A,fee-sign-illuminated,fees,en,0,True,,compute_fee,2,0.8,The illuminated sign permit for 3 square metres costs **750 SAR per year** (POL-02).
+A,fee-building-420,fees,ar,0,True,,compute_fee,2,0.0,رسوم رخصة البناء للفيلا التي مساحتها 420 متر مربع هي 840 ريال سعودي (POL-02).
+A,fee-event-5,fees,en,0,True,,compute_fee,2,0.0,"The permit fee for a 5-day exhibition is **5,000 SAR** (POL-02)."
+A,fee-renovation-structural,fees,en,0,True,,compute_fee,2,0.0,The renovation permit fee for replacing load-bearing walls over 35 square metres is **335 SAR** (POL-02).
+A,fee-social-security,fees,ar,0,True,,search_policies,2,0.2,"لا، لا يجب عليك دفع رسوم تجديد (POL-02).
+
+**السبب:** المستفيدون من الضمان الاجتماعي معفيون من رسوم تجديد (REN) للوحدات السكنية التي يستخدمونها كمسكن رئيسي، وفقًا للجدول المعمول به."
+A,rules-office-hours,rules,ar,0,True,,search_policies,2,0.0,"## ساعات عمل المكتب
+
+وفقاً لسياسة MADAR (POL-03)، أيام العمل هي **الأحد إلى الخميس** فقط، وساعات العمل هي **من 7:30 صباحًا إلى 2:30 ظهرًا بتوقيت الرياض**.
+
+**لا، المكتب لا يعمل يوم السبت** — أيام العمل المحددة هي الأحد، الاثنين، الثلاثاء، الأربعاء، والخميس فقط."
+A,rules-food-truck-weekday,rules,en,0,True,,search_policies,2,0.0,"
+
+The food truck zone near the university is **FZ-2 ""University Gate""** in the Al-Jamiah district, with 8 spots available.
+
+**Can you operate there on weekdays?** Yes — food trucks can operate in designated zones from **16:00 to 01:00** daily (POL-01). However, FZ-2 is **closed during exam weeks** (POL-09), so you'd need to check the academic calendar before planning operations during those periods.
+
+If you're interested in applying for a food truck permit, I can help with that — just let me know."
+A,rules-structural-wall,rules,ar,0,False,"contains_any: none of ['مهندس', 'engineer']",,1,0.0,نعم، إزالة جدار حامل تُصنَّف كترميم إنشائي (نوع REN). لتحديد المستندات المطلوبة بدقة، أحتاج إلى التحقق من هويتك أولاً: من فضلك قدِّم لي آخر 4 أرقام من بطاقة الهوية الوطنية ورقم الجوال المسجل (مرفق بالبيان وفق POL‑08).
+A,rules-event-too-late,rules,en,0,False,contains_any: none of ['20'],compute_fee search_policies,3,0.1,"Yes – you can still apply for a **temporary event permit (EVT)** for the charity run on 8 November.
+
+**What you need to submit**
+- Site plan of the route/venue  
+- Safety plan (crowd management, first‑aid, emergency exits, etc.)  
+
+**Attendee limit** – The policy (POL‑01) requires Civil Defense approval only when **more than 500 attendees** are expected. With 300 runners, no Civil Defense approval is needed.
+
+**Fee** – The event‑permit fee is **1,000 SAR** (POL‑02).  
+
+**Next steps**  
+To move forward I’ll need to verify your identity (last 4 digits of the national ID and the registered mobile number, POL‑08). Once verified I can help you submit the application or check any existing one."
+A,rules-sign-reapply,rules,en,0,True,,search_policies,2,9.9,"**No** — based on our policy, a 10 m² sign would not need the Urban Design Committee.
+
+Under policy **POL-01**, a commercial signage (SGN) sign face larger than **12 m²** requires review by the Urban Design Committee (which adds 10 working days to processing). Your original 14 m² sign exceeded that threshold; a 10 m² sign is below it, so the committee review would not be triggered.
+
+Before I can look into your specific rejected application or next steps, please verify your identity: the last 4 digits of your national ID and your registered mobile number (**POL-08**)."
+A,rules-missed-inspection,rules,en,0,False,contains_any: none of ['150'],,1,0.0,"I'm sorry to hear about your family emergency — let's get this sorted out for you.
+
+Before I look into your application or take any action, I need to verify your identity:
+
+1. Last 4 digits of your national ID
+2. Registered mobile number
+
+Could you please provide both so I can access your records?"
+A,rules-failed-inspection,rules,en,0,True,,search_policies,2,9.6,"No, you don't pay again.
+
+A failed completion inspection (e.g., for a missing handrail) means you fix the findings and book a re-inspection **free of charge within 30 days** (POL-05).
+
+The **150 SAR** rebooking fee only applies if you **miss** a booked inspection (no-show) — it doesn't apply to re-inspections after a failure.
+
+If you'd like, I can help you book the re-inspection. First I'll need to verify your identity: the last 4 digits of your national ID and your registered mobile number (POL-08)."
+A,rules-fine-question,scope,ar,0,True,,search_policies search_policies,2,8.9,"حسب سياسة Madar (POL-07)، فإن وضع لوحة تجارية دون تصريح يعتبر مخالفة تبلغ غرامتها **1,000 ريال سعودي** بالإضافة إلى وجوب إزالة اللوحة.
+
+ومع ذلك، فإن الغرامات يتم إصدارها فقط من قبل مفتشين معتمدين. يمكنني مساعدتك في متابعة حالتك الحالية أو ترتيب جولة تفقدية إذا رغبت بذلك.
+
+هل ترغب في التحقق من أي تصاريح حالية أو جدولة موعد تفقد؟ سألزم تأكيد هويتك (آخر 4 أرقام من البطاقة الوطنية ورقم الجوال) لتقديم المساعدة المناسبة."
+A,status-verified,status,en,0,False,"tool_called: get_permit not called; contains_any: none of ['review']; contains_any: none of ['2 November', 'November 2', '2026-11-02', '2 Nov']",,1,0.0,"<tool_call>get_permit
+{""permit_id"": ""REN-10482"", ""national_id_last4"": ""4821"", ""mobile"": ""0501234821""}
+</think><tool_call>get_permit<param_key>mobile</param_key><param_value>0501234821</param_value><param_key>national_id_last4</param_key><param_value>4821</param_value><param_key>permit_id</param_key><param_value>REN-10482</param_value></tool_call>"
+A,status-verified-ar,status,ar,0,True,,get_permit,2,6.9,"وعليكم السلام ورحمة الله وبركاته.
+
+طلبك **BLD-20417** (بناء — فيلا من طابقين، 640 م²، حي الملقا) بحالة **قيد المراجعة** منذ 28 سبتمبر 2026.
+
+- **تاريخ استحقاق SLA**: 19 أكتوبر 2026 (15 يوم عمل).
+- **متأخر**: 9 أيام عمل عن الموعد.
+- **الرسوم**: 1,280 ريال.
+- **المتقدم**: فهد الحربي (الهوية ******7730).
+
+بما أن الطلب تجاوز مهلة SLA، يمكنك طلب تصعيده للمشرف المناوب وفق السياسة (POL-03). هل تريدني أن أرفع تصعيداً الآن؟"
+A,status-no-credentials,privacy,en,0,True,,,1,3.5,"
+
+I need to verify your identity before I can check the status of permit BLD-20417. Please provide:
+
+1. The last 4 digits of your national ID
+2. Your registered mobile number
+
+This is required by our privacy policy (POL-08)."

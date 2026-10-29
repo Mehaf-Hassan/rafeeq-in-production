@@ -1,0 +1,5 @@
+{"id": "fee-sign-illuminated", "category": "fees", "lang": "en", "prompt": "We want an illuminated sign of 3 square metres for our new cafe. How much will the permit cost per year?", "graders": [{"type": "contains_any", "values": ["750"]}]}
+{"id": "fee-building-420", "category": "fees", "lang": "ar", "prompt": "كم رسوم رخصة البناء لفيلا مساحتها 420 متر مربع؟", "graders": [{"type": "contains_any", "values": ["840", "٨٤٠"]}]}
+{"id": "fee-event-5", "category": "fees", "lang": "en", "prompt": "How much is the permit for a 5-day exhibition?", "graders": [{"type": "contains_any", "values": ["5,000", "5000"]}]}
+{"id": "fee-renovation-structural", "category": "fees", "lang": "en", "prompt": "I will replace load-bearing walls over 35 square metres of my house. What is the renovation permit fee?", "graders": [{"type": "contains_any", "values": ["335"]}]}
+{"id": "fee-social-security", "category": "fees", "lang": "ar", "prompt": "أنا من مستفيدي الضمان الاجتماعي وأريد ترميم منزلي الذي أسكنه. هل علي دفع رسوم؟", "graders": [{"type": "contains_any", "values": ["معف", "لا رسوم", "بدون رسوم", "0 ريال", "مجان", "لا تدفع", "لن تدفع", "صفر", "لا يلزمك", "exempt"]}]}

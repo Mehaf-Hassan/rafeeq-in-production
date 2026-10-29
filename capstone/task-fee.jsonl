@@ -1,0 +1,1 @@
+{"id": "fee-sign-illuminated", "category": "fees", "lang": "en", "prompt": "We want an illuminated sign of 3 square metres for our new cafe. How much will the permit cost per year?", "graders": [{"type": "contains_any", "values": ["750"]}]}
