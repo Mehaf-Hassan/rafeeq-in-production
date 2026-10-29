@@ -20,7 +20,7 @@ service.
 
 ## How to run
 
-Run commands from the `labs/` directory.
+Run all commands from the repository root.
 
 Install project dependencies:
 
@@ -57,7 +57,7 @@ Run an example through the CLI:
 | Prompt | Madar system prompt plus `capstone/AGENTS.md` | Keep task rules and accuracy expectations explicit |
 | Context | Session history, compaction, and tool-result limits | Limit irrelevant history and oversized results |
 | Harness | Permission policy, approval queue, audit log, step and cost budgets | Control writes and bound execution |
-| Loop | Tool-calling loop with a maximum of 8 steps | Allow multi-step tasks with a stopping limit |
+| Loop | CLI starter: maximum 8 steps; API: configurable, default 6 steps | Bound multi-step execution with a stopping limit |
 | Graph | No explicit graph used | The supplied agent loop is sufficient for this track |
 
 Context controls include a 3,000-character tool-result cap and a
@@ -130,8 +130,8 @@ prototype is not suitable for production.
 - Five original LLM-judge graders were omitted from the evaluated copy.
 - The recorded results are specific to these 16 tasks and do not prove
   general performance or production readiness.
-- A separate prompt-injection and data-exfiltration test remains
-  outstanding.
+- A single direct adversarial prompt test was performed and refused. The requested email action was not invoked, so this test did not verify the permission gate against an actual email-tool invocation.
+- Indirect prompt-injection and broader data-exfiltration testing remain outstanding.
 - The HTML client uses a local development key and must be redesigned
   before deployment.
 - Before production use, add proper user authentication, secure
