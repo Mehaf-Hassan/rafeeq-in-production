@@ -35,7 +35,8 @@ Never commit `.env` or share the API key.
 
 Start the API locally:
 
-    RAFEEQ_API_KEYS=dev-key-1 uv run servers/rafeeq_api.py --port 8793
+    RAFEEQ_API_KEYS=dev-key-1 RAFEEQ_MAX_COST=0.05 uv run servers/rafeeq_api.py --port 8793
+    RAFEEQ_MAX_COST sets the approximate per-request cost budget in USD. It defaults to 0.05. The limit is checked after a model/tool step, so actual provider charges may exceed it slightly.
 
 Open the chat interface:
 
@@ -135,3 +136,5 @@ prototype is not suitable for production.
   before deployment.
 - Before production use, add proper user authentication, secure
   approval handling, and a broader security and reliability review.
+
+https://github.com/SDAIAAcademy/agentic-ai

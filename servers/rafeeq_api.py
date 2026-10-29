@@ -50,6 +50,7 @@ import madar  # noqa: E402
 API_KEYS = {k.strip() for k in os.getenv("RAFEEQ_API_KEYS", "dev-key-1").split(",") if k.strip()}
 SESSION_TOKENS = int(os.getenv("RAFEEQ_SESSION_TOKENS", "40000"))
 MAX_STEPS = int(os.getenv("RAFEEQ_MAX_STEPS", "6"))
+MAX_COST = float(os.getenv("RAFEEQ_MAX_COST", "0.05"))
 SECOND_MODEL = os.getenv("RAFEEQ_SECOND_MODEL", K.FALLBACKS[0] if K.FALLBACKS else K.MODEL)
 
 
@@ -189,6 +190,7 @@ def create_app(workdir: Path | None = None, trace_file: Path | None = None) -> F
             shape=TracedShape(tracer),
             history=history,
             max_steps=MAX_STEPS,
+            max_cost=MAX_COST,
             permission=permission,
             verbose=False,
             )

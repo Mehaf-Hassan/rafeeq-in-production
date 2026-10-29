@@ -35,3 +35,14 @@ artifacts/capstone/eval_B_fee_*.csv
 # Temporary evaluation outputs
 artifacts/capstone/eval.csv
 artifacts/capstone/eval_*_smoke*.csv
+
+# Course notebooks and source exports not needed for Rafeeq runtime
+/00_setup_check.ipynb
+/D[1-4]_*.ipynb
+/solutions/
+/_src/
+/_tools/
+
+# Backup and template files
+/capstone/README_starter_backup.md
+/capstone/TEMPLATE_README.md
