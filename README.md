@@ -148,4 +148,4 @@ prototype is not suitable for production.
 - Before production use, add proper user authentication, secure
   approval handling, and a broader security and reliability review.
 
-https://github.com/SDAIAAcademy/agentic-ai
+[Advanced Agentic AI Systems Engineering - SDAIA Academy](https://github.com/sdaiaacademy/agentic-ai/)
